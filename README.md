@@ -1,2 +1,3 @@
 # ML
-This is a collection of learning from ML applications in power systems
+This is a collection of course learnings from ML applications in power systems
+
