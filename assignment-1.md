@@ -16,7 +16,8 @@ ercot = pd.read_csv('20190101-20191231 ERCOT Real-time Price.csv')
 ercot['Date'] = pd.to_datetime(ercot['Date'])
 ercot
 
-"""
+"""<img width="378" alt="Screen Shot 2022-12-26 at 10 47 29 PM" src="https://user-images.githubusercontent.com/121323869/209608532-e3054ef9-d354-4aa8-b85d-d1c1defad4e3.png">
+
 Now, test the hypothesis that the mean of `Price` for zone `LZ_HOUSTON` is $30$ at the significance level $5\%$."""
 
 #avg=ercot[ercot['Zone'] == 'LZ_HOUSTON']['Price'].mean()
@@ -26,12 +27,22 @@ out=stats.ttest_1samp(houstonVal,30)
 out
 # when testing data from standard normal distribution, where mean=0; null hypothesis is expected to be rejected
 
+output-> Ttest_1sampResult(statistic=2.7773995927517725, pvalue=0.0054912309477494195)
+
+
 if out.pvalue>=0.05:
   print('Do not reject H0')
 else:
   print('Reject H0')
 
+
+output -> Reject H0
+
+
 """We have obtained the $t$-statistic value as can be seen above. Then, we can also compute the degrees of freedom using `stats.t.cdf` to verify the $p$-value obtained above."""
 
 print(stats.t.sf(abs(out.statistic), df=houstonCount)*2)
 
+output-> 0.005491229616538812
+
+Hence, we have verified the p-value in both cases.
